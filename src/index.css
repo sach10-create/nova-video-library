@@ -1,3 +1,13 @@
 .test-button {
   margin: 1rem;
 }
+
+.logo {
+  height: auto;
+  width: 15rem;
+}
+
+.header-comp .logo-p {
+  top: 6.5rem;
+  left: 11rem;
+}

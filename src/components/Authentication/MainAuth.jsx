@@ -12,11 +12,11 @@ const MainAuth = () => {
   const navigate = useNavigate();
 
   const handleEmailSignIn = (e) => {
-    loginDispatch({ email: e.target.value });
+    loginDispatch({ email: e.target.value, type: "UPDATE_EMAIL" });
   };
 
   const handlePasswordSignIn = (e) => {
-    loginDispatch({ password: e.target.value });
+    loginDispatch({ password: e.target.value, type: "UPDATE_PASSWORD" });
   };
 
   const [authTabsState, setAuthTabsState] = useState("login");
@@ -26,19 +26,23 @@ const MainAuth = () => {
   };
 
   const handleEmailSignUp = (e) => {
-    registerDispatch({ email: e.target.value });
+    registerDispatch({ email: e.target.value, type: "UPDATE_EMAIL" });
   };
 
   const handlePasswordSignUp = (e) => {
-    registerDispatch({ password: e.target.value });
+    registerDispatch({ password: e.target.value, type: "UPDATE_PASSWORD" });
   };
 
   const handleNameSignUp = (e) => {
-    registerDispatch({ name: e.target.value });
+    registerDispatch({ name: e.target.value, type: "UPDATE_NAME" });
   };
 
   const testHandlerSignIn = (e) => {
-    loginDispatch({ email: "sachin@gmail.com", password: "sachin123" });
+    loginDispatch({
+      email: "test@gmail.com",
+      password: "test123",
+      type: "TEST_CREDENTIAL",
+    });
   };
   return (
     <section className="main-comp d-flex justify-content-center align-center flex-column">

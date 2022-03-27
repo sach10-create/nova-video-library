@@ -1,4 +1,5 @@
 import { useContext, useReducer, createContext } from "react";
+import { registerReducer } from "../reducers";
 
 const RegisterContext = createContext({
   name: "",
@@ -7,19 +8,12 @@ const RegisterContext = createContext({
 });
 
 const RegisterProvider = ({ children }) => {
-  const [registerState, registerDispatch] = useReducer(
-    (state, action) => {
-      return {
-        ...state,
-        ...action,
-      };
-    },
-    {
-      name: "",
-      email: "",
-      password: "",
-    }
-  );
+  const [registerState, registerDispatch] = useReducer(registerReducer, {
+    name: "",
+    email: "",
+    password: "",
+  });
+
   return (
     <RegisterContext.Provider value={{ registerState, registerDispatch }}>
       {children}

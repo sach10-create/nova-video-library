@@ -1,17 +1,13 @@
 import { createContext, useContext, useReducer } from "react";
+import { loginReducer } from "../reducers";
 
 const LoginContext = createContext({ email: "", password: "" });
 
 const LoginProvider = ({ children }) => {
-  const [loginState, loginDispatch] = useReducer(
-    (state, action) => {
-      return {
-        ...state,
-        ...action,
-      };
-    },
-    { email: "", password: "" }
-  );
+  const [loginState, loginDispatch] = useReducer(loginReducer, {
+    email: "",
+    password: "",
+  });
 
   return (
     <LoginContext.Provider value={{ loginState, loginDispatch }}>
