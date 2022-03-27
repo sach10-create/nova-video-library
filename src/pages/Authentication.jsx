@@ -1,5 +1,6 @@
-const AuthenticationPage = () =>{
-    return (<h1> Authentication Page</h1>)
-}
+import { Authentication } from "../components";
+const AuthenticationPage = () => {
+  return <Authentication />;
+};
 
-export {AuthenticationPage}
+export { AuthenticationPage };
