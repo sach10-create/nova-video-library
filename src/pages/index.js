@@ -5,3 +5,4 @@ export {PlaylistPage as Playlist} from "./Playlist";
 export {ProfilePage as Profile} from "./Profile";
 export {WatchHistoryPage as WatchHistory} from "./WatchHistory";
 export {WatchLaterPage as WatchLater} from "./WatchLater";
+export {VideoListingPage as VideoListing} from "./VideoListing";

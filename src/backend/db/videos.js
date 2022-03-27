@@ -2,20 +2,30 @@
  * Videos Database can be added here.
  * You can add videos of your wish with different attributes
  * */
+import { v4 as uuid} from "uuid"; 
 
 export const videos = [
   {
-    _id: "Wo5dMEP_BbI",
-    title: "Awesome Video about Coding",
-    description:
-      "At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi sint occaecati cupiditate non provident, similique sunt in culpa qui officia deserunt mollitia animi, id est laborum et dolorum fuga.",
-    creator: "Soham Shah",
+    _id: uuid(),
+    title: "Velocity vs Global 2",
+    channelName: "The Esports Club 2",
+    subscribers : 123,
+    verified : false,
+    views : 10,
+    duration : "1:01:31",
+    likes : 220,
+    category: [ " Gaming2" ," Streaming2"],
+    description : "Valorant match 2"
   },
   {
-    _id: "F_Riqjdh2oM",
-    title: "Neural Networks from Scratch - P.1 Intro and Neuron Code",
-    creator: "Sentdex",
-    description:
-      "At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi sint occaecati cupiditate non provident, similique sunt in culpa qui officia deserunt mollitia animi, id est laborum et dolorum fuga.",
+    _id: uuid(),
+    title: "Velocity vs Global",
+    channelName: "The Esports Club",
+    verified : false,
+    views : 10,
+    duration : "1:01:31",
+    likes : 220,
+    category: [ " Gaming" ," Streaming"],
+    description : "Valorant match"
   },
 ];

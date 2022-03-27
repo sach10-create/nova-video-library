@@ -13,3 +13,18 @@
   top: 6.5rem;
   left: 11rem;
 }
+
+.side-nav-link{
+  text-decoration: none;
+  font-size: 1.6rem;
+  font-weight: bolder;
+  text-align: left;
+  margin-left: 1rem;
+  cursor: pointer;
+  color: var(--font-color); 
+}
+
+.side-nav-icon{
+  margin-right: 1rem;
+  font-size: 1.6rem;
+}
