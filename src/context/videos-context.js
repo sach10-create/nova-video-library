@@ -1,18 +1,22 @@
 import {
   createContext,
+  useContext,
   useEffect,
   useReducer,
   useState,
-} from "react/cjs/react.production.min";
+} from "react";
 import { getVideosDatahook } from "../custom-hooks/getVideosData";
+import { getCategoriesDatahook } from "../custom-hooks";
 import { videosReducer , sortByReducer } from "../reducers";
+import { VideoCompose } from "../utils";
+import { CategoryVideos } from "../utils";
 
 const getdefaultVideoState = (categoriesData) => {
   return {
     categoryType: "All",
     categoryName: "",
-    categoryFilters: categoriesData.categories.reduce((prev, curr) => {
-      prev[curr.name] = false;
+    categoryFilters: categoriesData.reduce((prev, curr) => {
+      prev[curr.categoryName] = false;
       return prev;
     }, {}),
   };
@@ -22,7 +26,7 @@ const VideosContext = createContext({});
 
 const VideoProvider = ({ children }) => {
   const videosData = getVideosDatahook();
-  const categoriesData = useCategoriesDataHook();
+  const categoriesData = getCategoriesDatahook();
 
   const [defaultVideoState, setdefaultVideoState] = useState({});
   useEffect(() => {
@@ -56,13 +60,16 @@ const VideoProvider = ({ children }) => {
       value={{
         videosState,
         videosData: filteredVideosData,
-        filtersData: filtersData,
-        videosDispatch,
-        clearFilters: defaultVideoState,
+        categoriesData: categoriesData,
+        videosDispatch
       }}
     >
       {children}{" "}
     </VideosContext.Provider>
   );
+
 };
-export {VideoProvider};
+
+const useVideos = () => useContext(VideosContext);
+
+export {VideoProvider , useVideos};

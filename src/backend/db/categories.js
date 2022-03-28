@@ -20,7 +20,7 @@ export const categories = [
   },
   {
     _id: uuid(),
-    categoryName: "Backend Development",
+    categoryName: "Gaming",
     description:
       "Backend Development is also known as server-side development. It is everything that the users don't see and contains behind-the-scenes activities that occur when performing any action on a website.",
   },

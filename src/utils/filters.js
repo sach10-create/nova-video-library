@@ -20,8 +20,8 @@ const CategoryVideos = (videosState, videosData) =>
                 ...prev,
                 ...videosData.filter(
                   (video) =>
-                    product.category.filter(
-                      (videoCategory) => videoCategory === curr
+                    video.category.filter(
+                      (videoCategory) => videoCategory.toLowerCase() === curr.toLowerCase()
                     ).length !== 0
                 ),
               ]

@@ -8,7 +8,7 @@ const getVideosDatahook = () => {
     (async () => {
       try {
         const response = await axios.get(`/api/videos`);
-        setvideosData(response.json().videos);
+        setvideosData(response.data.videos);
       } catch (error) {
         console.log(error);
       }

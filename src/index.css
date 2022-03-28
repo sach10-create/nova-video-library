@@ -28,3 +28,75 @@
   margin-right: 1rem;
   font-size: 1.6rem;
 }
+
+/* cards */
+.video-card-container {
+  width: 35rem;
+  position: relative;
+  height: auto;
+  background-color: white;
+  border-radius: 1rem;
+  font-family: "Roboto", sans-serif;
+}
+
+.video-card-image-container {
+  width: 35rem;
+  padding: 0;
+  margin: 0;
+  height: auto;
+}
+
+.video-card-image {
+  height: auto;
+  width: 100%;
+  margin: 0;
+}
+
+.details-container {
+  gap: 10px;
+}
+
+.ratings {
+  gap: 1.5rem;
+  margin-top: 2px;
+}
+
+.ratings > * {
+  font-size: 1.4rem;
+}
+
+.channel {
+  gap: 5px;
+  margin-top: 8px;
+  color: #959696;
+}
+
+.fa-circle {
+  font-size: 3px;
+}
+
+.fa-circle-check {
+  font-size: 1.3rem;
+}
+
+.watch-later-icon {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+}
+
+.watch-later-icon {
+  background-color: white;
+  padding: 3px;
+  border-radius: 4px;
+}
+
+
+/* Page */
+.video-listing-container{
+  gap : 2rem
+}
+
+.filter-checked-chip{
+  color : var(--secondary-color);
+}

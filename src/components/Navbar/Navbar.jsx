@@ -8,34 +8,34 @@ const Navbar = ({ props }) => {
       <ul className="list-components">
         <li>
           <Link to="/" className="side-nav-link">
-            <i class="fa-solid fa-house side-nav-icon"></i>
+            <i className="fa-solid fa-house side-nav-icon"></i>
             Home
           </Link>
         </li>
         <li>
           <Link to="/explore" className="side-nav-link">
-            <i class="fa-solid fa-compass side-nav-icon"></i>
+            <i className="fa-solid fa-compass side-nav-icon"></i>
             Explore
           </Link>
         </li>
         <li>{ authState.token != null ?
           <Link to="/liked" className="side-nav-link">
-            <i class="fa-solid fa-thumbs-up side-nav-icon"></i>
+            <i className="fa-solid fa-thumbs-up side-nav-icon"></i>
             Liked Videos
           </Link>:
           <Link to="/auth" state = {{state : "/liked"}} className="side-nav-link">
-          <i class="fa-solid fa-thumbs-up side-nav-icon"></i>
+          <i className="fa-solid fa-thumbs-up side-nav-icon"></i>
           Liked Videos
         </Link>
 }
         </li>
         <li>{ authState.token != null ?
           <Link to="/playlist" className="side-nav-link">
-            <i class="fas fa-folder-plus side-nav-icon"></i>
+            <i className="fas fa-folder-plus side-nav-icon"></i>
             Playlists
           </Link>:
           <Link to="/auth" state = {{ state : "/playlist" }} className="side-nav-link">
-          <i class="fas fa-folder-plus side-nav-icon"></i>
+          <i className="fas fa-folder-plus side-nav-icon"></i>
           Playlists
         </Link>
 }
@@ -43,7 +43,7 @@ const Navbar = ({ props }) => {
         <li>
           {authState.token != null ? (
             <Link to="/watchlater" className="side-nav-link">
-              <i class="fa-solid fa-clock side-nav-icon"> </i>
+              <i className="fa-solid fa-clock side-nav-icon"> </i>
               Watch Later
             </Link>
           ) : (
@@ -52,7 +52,7 @@ const Navbar = ({ props }) => {
               state={{ state: "/watchlater" }}
               className="side-nav-link"
             >
-              <i class="fa-solid fa-clock side-nav-icon"> </i>
+              <i className="fa-solid fa-clock side-nav-icon"> </i>
               Watch Later
             </Link>
           )}
@@ -60,7 +60,7 @@ const Navbar = ({ props }) => {
         <li>
           {authState.token != null ? (
             <Link to="/history" className="side-nav-link">
-              <i class="fa-solid fa-clock-rotate-left side-nav-icon"> </i>
+              <i className="fa-solid fa-clock-rotate-left side-nav-icon"> </i>
               History
             </Link>
           ) : (
@@ -69,7 +69,7 @@ const Navbar = ({ props }) => {
               state={{ state: "/history" }}
               className="side-nav-link"
             >
-              <i class="fa-solid fa-clock-rotate-left side-nav-icon"> </i>
+              <i className="fa-solid fa-clock-rotate-left side-nav-icon"> </i>
               History
             </Link>
           )}
