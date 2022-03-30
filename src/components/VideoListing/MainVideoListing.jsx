@@ -1,14 +1,17 @@
-import { useVideos, useAuth } from "../../context";
+import { useVideos, useAuth, useWatchLater } from "../../context";
 import { Link } from "react-router-dom";
+import { presentInArray } from "../../utils";
+import { WatchLaterButton } from "./ExploreButtons";
 
 const MainVideoListing = () => {
   const { videosData } = useVideos();
   const { authState } = useAuth();
+  const { watchLaterState} = useWatchLater();
+
+  console.log(watchLaterState);
 
   return (
-    <div className="main-comp">
-    <div className="video-listing-container d-flex flex-wrap">
-    <div className="video-card-container">
+    <div className="main-comp-video">
       {videosData.length !== 0 ? (
         videosData.map(
           ({
@@ -19,12 +22,15 @@ const MainVideoListing = () => {
             subscribers,
             verified,
             likes,
+            duration,
             category,
             profileURL,
+            description,
             thumbnailURL,
+            videoURL
           }) => (
-            <div key={_id}>
-              <Link to='{videos/${_id}}' className="video-card-image-container">
+            <div className="video-card-container" key={_id}>
+              <Link to="{videos/${_id}}" className="video-card-image-container">
                 <img src={thumbnailURL} className="video-card-image" />
               </Link>
               <div className="details-container d-flex ">
@@ -41,8 +47,11 @@ const MainVideoListing = () => {
                   <h6 className="">{title}</h6>
 
                   <div className="channel d-flex align-center">
-                    <h6> {channelName}{verified && <i className="fa-solid fa-circle-check"></i>}</h6>
-                    
+                    <h6>
+                      {" "}
+                      {channelName}
+                      {verified && <i className="fa-solid fa-circle-check"></i>}
+                    </h6>
                   </div>
                   <div
                     className="ratings d-flex
@@ -70,26 +79,44 @@ const MainVideoListing = () => {
                   </div>
                 </div>
               </div>
-              <div className="watch-later-icon d-flex align-center justify-content-center">
-                <svg width="2.5rem" height="2.5rem" viewBox="0 0 32 32">
-                  <path
-                    fill="currentColor"
-                    d="M16 30a14 14 0 1 1 14-14a14 14 0 0 1-14 14Zm0-26a12 12 0 1 0 12 12A12 12 0 0 0 16 4Z"
-                  ></path>
-                  <path
-                    fill="currentColor"
-                    d="M20.59 22L15 16.41V7h2v8.58l5 5.01L20.59 22z"
-                  ></path>
-                </svg>
-              </div>
+              {authState.token !== null ? (
+                presentInArray(watchLaterState.itemsInWatchLater, _id) ? (
+                  <WatchLaterButton
+                    btnType="remove"
+                    videoId={_id}
+                    token={authState.token}
+                  />
+                ) : (
+                  <WatchLaterButton
+                    btnType="add"
+                    videoData={{
+                      video: {
+                        _id,
+                        title,
+                        channelName,
+                        subscribers,
+                        verified,
+                        views,
+                        duration,
+                        likes,
+                        description,
+                        profileURL,
+                        thumbnailURL,
+                        videoURL,
+                      },
+                    }}
+                    token={authState.token}
+                  />
+                )
+              ) : (
+                <WatchLaterButton btnType="redirect" />
+              )}
             </div>
           )
         )
       ) : (
-        <h1>sadsa</h1>
+        <h1>Loading</h1>
       )}
-    </div>
-    </div>
     </div>
   );
 };

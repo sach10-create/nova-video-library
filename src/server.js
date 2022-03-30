@@ -25,6 +25,11 @@ import {
   removeItemFromLikedVideos,
 } from "./backend/controllers/LikeController";
 import {
+  getWatchLaterHandler,
+  addItemToWatchLater,
+  removeItemFromWatchLater,
+} from "./backend/controllers/WatchLaterController";
+import {
   getAllPlaylistsHandler,
   addNewPlaylistHandler,
   removePlaylistHandler,
@@ -47,6 +52,7 @@ export function makeServer({ environment = "development" } = {}) {
       like: Model,
       history: Model,
       playlist: Model,
+      watchlater : Model
     },
 
     // Runs on the start of the server
@@ -62,6 +68,7 @@ export function makeServer({ environment = "development" } = {}) {
           likes: [],
           history: [],
           playlists: [],
+          watchlater : []
         })
       );
     },
@@ -86,6 +93,10 @@ export function makeServer({ environment = "development" } = {}) {
       this.get("/user/likes", getLikedVideosHandler.bind(this));
       this.post("/user/likes", addItemToLikedVideos.bind(this));
       this.delete("/user/likes/:videoId", removeItemFromLikedVideos.bind(this));
+
+      this.get("/user/watchlater", getWatchLaterHandler.bind(this));
+      this.post("/user/watchlater", addItemToWatchLater.bind(this));
+      this.delete("/user/watchlater/:videoId", removeItemFromWatchLater.bind(this));
 
       // playlist routes (private)
       this.get("/user/playlists", getAllPlaylistsHandler.bind(this));
