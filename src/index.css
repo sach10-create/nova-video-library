@@ -108,6 +108,38 @@
   grid-row: 2/3;
 }
 
-.basic-chip{
-  background-color: white;
+.basic-chip-video{
+  background-color: var(--white);
+  margin: 1rem;
+  padding: 1rem;
+  border-radius: 1rem;
+  font-size: 2rem;
+  border: 1px solid black;
+}
+
+.basic-chip-content{
+  font-size: 2rem;
+}
+
+.filters {
+  position: fixed;
+  opacity: 0;
+  pointer-events: none;
+}
+
+.filter-checked-chip{
+  background-color: var(--black);
+  color : var(--white);
+}
+
+.extra{
+  display: flex;
+  flex-wrap: wrap;
+  gap: 2rem;
+  flex-direction: row;
+  margin: 2rem;
+  grid-column: 3/13;
+  grid-row: 3/8;
+  background-color: var(--background-color);
+  grid-row: 2/8;
 }

@@ -1,17 +1,14 @@
-import { useVideos, useAuth, useWatchLater } from "../../context";
+import { useAuth, useWatchLater } from "../../context";
 import { Link } from "react-router-dom";
-import { presentInArray } from "../../utils";
-import { WatchLaterButton } from "./ExploreButtons";
 
-const MainVideoListing = () => {
-  const { videosData } = useVideos();
+const MainWatchLater = () => {
   const { authState } = useAuth();
   const { watchLaterState } = useWatchLater();
 
   return (
-    <div className="main-comp-video">
-      {videosData.length !== 0 ? (
-        videosData.map(
+    <div className="extra">
+      {watchLaterState.watchLaterData.length !== 0 ? (
+        watchLaterState.watchLaterData.map(
           ({
             _id,
             title,
@@ -53,7 +50,7 @@ const MainVideoListing = () => {
                   </div>
                   <div
                     className="ratings d-flex
-                            align-center"
+                              align-center"
                   >
                     <p>
                       {" "}
@@ -77,38 +74,6 @@ const MainVideoListing = () => {
                   </div>
                 </div>
               </div>
-              {authState.token !== null ? (
-                presentInArray(watchLaterState.itemsInWatchLater, _id) ? (
-                  <WatchLaterButton
-                    btnType="remove"
-                    videoId={_id}
-                    token={authState.token}
-                  />
-                ) : (
-                  <WatchLaterButton
-                    btnType="add"
-                    videoData={{
-                      video: {
-                        _id,
-                        title,
-                        channelName,
-                        subscribers,
-                        verified,
-                        views,
-                        duration,
-                        likes,
-                        description,
-                        profileURL,
-                        thumbnailURL,
-                        videoURL,
-                      },
-                    }}
-                    token={authState.token}
-                  />
-                )
-              ) : (
-                <WatchLaterButton btnType="redirect" />
-              )}
             </div>
           )
         )
@@ -119,4 +84,4 @@ const MainVideoListing = () => {
   );
 };
 
-export { MainVideoListing };
+export { MainWatchLater };

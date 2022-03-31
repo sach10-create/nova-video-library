@@ -1,5 +1,7 @@
+import { WatchLater} from "../components"
+
 const WatchLaterPage = () =>{
-    return (<h1> WatchLater Page</h1>)
+    return (<WatchLater/>)
 }
 
 export {WatchLaterPage}

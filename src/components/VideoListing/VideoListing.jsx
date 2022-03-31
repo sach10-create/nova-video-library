@@ -1,4 +1,4 @@
-import { Header, Footer , Navbar} from "./";
+import { Header, Footer , Navbar} from "../";
 import { MainVideoListing } from "./MainVideoListing";
 import { Filters } from "./Filters";
 

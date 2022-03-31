@@ -26,18 +26,17 @@ const Filters = () => {
   console.log(videosState);
 
   return (
-    <div className="chip-container-video d-flex flex-wrap">
+    <div className="chip-container-video d-flex flex-wrap align-center">
       {categoriesData.length && Object.keys(videosState).length && (
         <label
-          className={`basic-chip d-flex align-center flex-wrap ${
-            checkResetCatergoryFilters()
-              ? "filter-checked-chip"
-              : ""
+          className={`basic-chip-video ${
+            checkResetCatergoryFilters() ? "filter-checked-chip" : ""
           }`}
           key={"All"}
         >
           <input
             type="checkbox"
+            className="filters"
             value="FILTER_CATEGORY"
             checked={checkResetCatergoryFilters() ? true : false}
             onChange={resetFilters}
@@ -49,7 +48,7 @@ const Filters = () => {
         Object.keys(videosState).length !== 0 &&
         categoriesData.map(({ _id, categoryName }) => (
           <label
-            className={`basic-chip d-flex align-center flex-wrap ${
+            className={`basic-chip-video ${
               videosState.categoryFilters[categoryName]
                 ? "filter-checked-chip"
                 : ""
@@ -58,6 +57,7 @@ const Filters = () => {
           >
             <input
               type="checkbox"
+              className="filters"
               value="FILTER_CATEGORY"
               checked={videosState.categoryFilters[categoryName] ? true : false}
               onChange={(e) => categoryFilterHandler(e, categoryName)}
