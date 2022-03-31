@@ -1,37 +1,37 @@
 import { removeFromArray, removeObjFromArray } from "../utils";
 /**
- * Reducer function to handle watchlater state
- * @param {Object} likedVideosState State values of watchlater
- * @param {*} watchlaterAction The changed state
- * @returns Updated state into watchlaterState
+ * Reducer function to handle likedVideos state
+ * @param {Object} likedVideosState State values of likedVideos
+ * @param {*} likedVideosAction The changed state
+ * @returns Updated state into likedVideosState
  */
 const likedVideosReducer = (likedVideosState, likedVideosAction) => {
     switch (likedVideosAction.type) {
         case "ADD_ITEM":
             return {
                 ...likedVideosState,
-                watchLaterItemsCount: likedVideosAction.watchlaterItemsCount,
-                itemsInWatchLater: [
-                    ...likedVideosState.itemsInWatchLater,
-                    ...likedVideosAction.itemsInwatchlater,
+                likedVideosItemsCount: likedVideosAction.likedVideosItemsCount,
+                itemsInLikedVideos: [
+                    ...likedVideosState.itemsInLikedVideos,
+                    ...likedVideosAction.itemsInLikedVideos,
                 ],
-                likedVideoData: [
-                    ...likedVideosState.likedVideoData,
-                    likedVideosAction.likedVideoData,
+                likedVideosData: [
+                    ...likedVideosState.likedVideosData,
+                    likedVideosAction.likedVideosData,
                 ],
             };
 
         case "REMOVE_ITEM":
             return {
                 ...likedVideosState,
-                watchLaterItemsCount: watchlaterAction.watchlaterItemsCount,
-                itemsInWatchLater: removeFromArray(
-                    likedVideosState.itemsInWatchLater,
-                    likedVideosAction.itemsInwatchlater[0]
+                likedVideosItemsCount: likedVideosAction.likedVideosItemsCount,
+                itemsInLikedVideos: removeFromArray(
+                    likedVideosState.itemsInLikedVideos,
+                    likedVideosAction.itemsInLikedVideos[0]
                 ),
-                likedVideoData: removeObjFromArray(
-                    likedVideosState.likedVideoData,
-                    likedVideosAction.likedVideoData
+                likedVideosData: removeObjFromArray(
+                    likedVideosState.likedVideosData,
+                    likedVideosAction.likedVideosData
                 ),
             };
         default:

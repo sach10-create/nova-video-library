@@ -83,9 +83,15 @@
   position: absolute;
   top: 1rem;
   right: 1rem;
+  background-color: white;
+  padding: 3px;
+  border-radius: 4px;
 }
 
-.watch-later-icon {
+.liked-videos-icon{
+  position: absolute;
+  top: 1rem;
+  left: 1rem;
   background-color: white;
   padding: 3px;
   border-radius: 4px;
@@ -108,7 +114,7 @@
   grid-row: 2/3;
 }
 
-.basic-chip-video{
+.basic-chip-video {
   background-color: var(--white);
   margin: 1rem;
   padding: 1rem;
@@ -117,7 +123,7 @@
   border: 1px solid black;
 }
 
-.basic-chip-content{
+.basic-chip-content {
   font-size: 2rem;
 }
 
@@ -127,12 +133,12 @@
   pointer-events: none;
 }
 
-.filter-checked-chip{
+.filter-checked-chip {
   background-color: var(--black);
-  color : var(--white);
+  color: var(--white);
 }
 
-.extra{
+.extra {
   display: flex;
   flex-wrap: wrap;
   gap: 2rem;

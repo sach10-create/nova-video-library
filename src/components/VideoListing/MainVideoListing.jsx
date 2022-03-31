@@ -1,12 +1,20 @@
-import { useVideos, useAuth, useWatchLater } from "../../context";
+import {
+  useVideos,
+  useAuth,
+  useWatchLater,
+  useLikedVideos,
+} from "../../context";
 import { Link } from "react-router-dom";
 import { presentInArray } from "../../utils";
 import { WatchLaterButton } from "./ExploreButtons";
+import { LikedVideosButton } from "./LikedButton";
 
 const MainVideoListing = () => {
   const { videosData } = useVideos();
   const { authState } = useAuth();
   const { watchLaterState } = useWatchLater();
+
+  const { likedVideosState } = useLikedVideos();
 
   return (
     <div className="main-comp-video">
@@ -108,6 +116,39 @@ const MainVideoListing = () => {
                 )
               ) : (
                 <WatchLaterButton btnType="redirect" />
+              )}
+
+              {authState.token !== null ? (
+                presentInArray(likedVideosState.itemsInLikedVideos, _id) ? (
+                  <LikedVideosButton
+                    btnType="remove"
+                    videoId={_id}
+                    token={authState.token}
+                  />
+                ) : (
+                  <LikedVideosButton
+                    btnType="add"
+                    videoData={{
+                      video: {
+                        _id,
+                        title,
+                        channelName,
+                        subscribers,
+                        verified,
+                        views,
+                        duration,
+                        likes,
+                        description,
+                        profileURL,
+                        thumbnailURL,
+                        videoURL,
+                      },
+                    }}
+                    token={authState.token}
+                  />
+                )
+              ) : (
+                <LikedVideosButton btnType="redirect" />
               )}
             </div>
           )
