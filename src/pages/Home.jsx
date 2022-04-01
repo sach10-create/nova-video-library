@@ -1,5 +1,15 @@
-const HomePage = () =>{
-    return (<h1> Home Page</h1>)
-}
+import { Link } from "react-router-dom";
 
-export {HomePage}
+const HomePage = () => {
+  return (
+    <div>
+      <h1>This is home page</h1>
+      {/* <Link to="/products">Products</Link> */}
+      <Link to="/auth" state={{ state: "/" }}>
+        Authentication
+      </Link>
+    </div>
+  );
+};
+
+export { HomePage };
