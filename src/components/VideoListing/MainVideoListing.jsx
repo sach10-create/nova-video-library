@@ -77,7 +77,7 @@ const MainVideoListing = () => {
                   </div>
                 </div>
               </div>
-              {authState.token !== null ? (
+              {authState.token.length ? (
                 presentInArray(watchLaterState.itemsInWatchLater, _id) ? (
                   <WatchLaterButton
                     btnType="remove"
