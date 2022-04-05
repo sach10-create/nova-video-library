@@ -24,7 +24,6 @@ const addTolikedVideosHandler = (
 					authorization: token,
 				},
 			});
-			console.log(response);
 			likedVideosDispatch({
 				type: "ADD_ITEM",
 				likedVideosItemsCount: response.data.likes.length,
@@ -88,6 +87,7 @@ const getlikedVideosDataHandler = (token, likedVideosDispatch) => {
 					authorization: token,
 				},
 			});
+			
 			likedVideosDispatch({
 				type: "GET_ITEM",
 				likedVideosData: response.data.likes,

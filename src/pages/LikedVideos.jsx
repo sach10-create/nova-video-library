@@ -1,5 +1,7 @@
+import { LikedVideos } from "../components"
+
 const LikedVideosPage = () =>{
-    return (<h1> LikedVideos Page</h1>)
+    return (<LikedVideos/>)
 }
 
 export {LikedVideosPage}

@@ -12,9 +12,19 @@ export {
   removeObjFromArray,
   updateObjInArray,
   updateAddressObjInArray,
+  getDataFromPlaylist,
+  getVideosFromPlaylist,
 } from "./helpers";
 export {
   addTolikedVideosHandler,
   removeFromLikedVideosHandler,
   getlikedVideosDataHandler,
 } from "./liked-videos";
+
+export {
+  addToNewPlaylistHandler,
+  removePlaylistHandler,
+  getPlaylistDataHandler,
+  addVideoToPlaylistHandler,
+  removeVideoFromPlaylistHandler
+} from "./playlist";

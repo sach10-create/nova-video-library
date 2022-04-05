@@ -24,7 +24,7 @@ const addTowatchlaterHandler = (
 					authorization: token,
 				},
 			});
-			
+			console.log(response);
 			watchLaterDispatch({
 				type: "ADD_ITEM",
 				watchlaterItemsCount: response.data.watchlater.length,

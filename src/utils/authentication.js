@@ -15,7 +15,7 @@ const loginHandler = (e, location, navigate, loginState, authDispatch) => {
       });
       localStorage.setItem("token", response.data.encodedToken);
       localStorage.setItem("email", response.data.foundUser.email);
-      localStorage.setItem("name", response.data.foundUser.name);
+      localStorage.setItem("name", response.data.foundUser.firstName);
       navigate(location.state.state);
     } catch (error) {
       console.log(error);

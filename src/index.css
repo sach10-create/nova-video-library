@@ -88,13 +88,45 @@
   border-radius: 4px;
 }
 
-.liked-videos-icon{
+.liked-videos-icon {
   position: absolute;
   top: 1rem;
   left: 1rem;
   background-color: white;
   padding: 3px;
   border-radius: 4px;
+}
+
+.fa-heart{
+  font-size: 2.5rem;
+}
+
+.fa-heart:hover{
+  color: red;
+}
+
+/* .video-card-container:hover + .playlist-icon{
+  display: block;
+} */
+
+
+.video-card-container:hover{
+  transform: scale(1.05);
+}
+
+
+.playlist-icon {
+  position: absolute;
+  right: 1rem;
+  bottom: 5.5rem;
+  padding: 3px;
+  border-radius: 4px;
+  font-size: 3.5rem;
+}
+
+.main-comp{
+  margin: 1rem;
+  gap:2rem;
 }
 
 /* Page */
@@ -148,4 +180,68 @@
   grid-row: 3/8;
   background-color: var(--background-color);
   grid-row: 2/8;
+}
+
+.modal-container {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  z-index: var(--max-z-index);
+}
+
+.modal-bg {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  background-color: white;
+  opacity: 0.5;
+}
+
+.modal-content {
+  position: absolute;
+  background-color: var(--background-color);
+  padding: 2rem;
+  border-radius: 1rem;
+}
+
+.btn {
+  gap: 1rem;
+}
+
+.video-modal-dismiss {
+  position: absolute;
+  right: 5px;
+  top: 5px;
+  font-size: 2.5rem;
+}
+
+.form-heading {
+  padding-bottom: 2rem;
+}
+
+.video-check {
+  margin: 0 5px;
+  padding: 0;
+  font-size: 3rem;
+}
+
+.playlist-card {
+  gap: 1rem;
+ 
+}
+
+.playlist-link{
+  border-radius: 1rem;
+  background-color: var(--primary-color);
+  margin: 2rem;
+  padding: 2rem;
+  box-shadow: 5px 5px 5px var(--box-shadow);
+}
+
+.play{
+  flex-wrap: wrap;
 }

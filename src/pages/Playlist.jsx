@@ -1,5 +1,7 @@
+import { PlaylistMain } from "../components/Playlist/PlaylistMain"
+
 const PlaylistPage = () =>{
-    return (<h1> Playlist Page</h1>)
+    return (<PlaylistMain/>)
 }
 
 export {PlaylistPage}

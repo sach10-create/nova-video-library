@@ -63,15 +63,17 @@ const WatchLaterButton = (props) => {
           state={{ state: "/explore" }}
           className="no-link-decoration cursor-pointer outline-btn p-5 b-radius-2 text-bold card-watchlater m-5 flex-row justify-content-center align-center flex-gap-1 flex-grow-1"
         >
-                <div
-          onClick={(e) =>
-            addTowatchlaterHandler(
-              e,
-              props.videoData,
-              props.token,
-              watchLaterDispatch
-            )
-          }  className="watch-later-icon d-flex align-center justify-content-center">
+          <div
+            onClick={(e) =>
+              addTowatchlaterHandler(
+                e,
+                props.videoData,
+                props.token,
+                watchLaterDispatch
+              )
+            }
+            className="watch-later-icon d-flex align-center justify-content-center"
+          >
             <svg width="2.5rem" height="2.5rem" viewBox="0 0 32 32">
               <path
                 fill="currentColor"
