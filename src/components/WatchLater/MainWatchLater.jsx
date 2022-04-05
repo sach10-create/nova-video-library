@@ -1,5 +1,6 @@
 import { useAuth, useWatchLater } from "../../context";
 import { Link } from "react-router-dom";
+import { WatchLaterButton } from "../VideoListing";
 
 const MainWatchLater = () => {
   const { authState } = useAuth();
@@ -72,9 +73,15 @@ const MainWatchLater = () => {
                       likes
                     </p>
                   </div>
+                  <WatchLaterButton
+                    btnType="remove"
+                    videoId={_id}
+                    token={authState.token}
+                  />
                 </div>
               </div>
             </div>
+            
           )
         )
       ) : (

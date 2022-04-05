@@ -8,6 +8,7 @@ const MainVideoListing = () => {
   const { authState } = useAuth();
   const { watchLaterState } = useWatchLater();
 
+    console.log(authState);
   return (
     <div className="main-comp-video">
       {videosData.length !== 0 ? (
@@ -77,7 +78,7 @@ const MainVideoListing = () => {
                   </div>
                 </div>
               </div>
-              {authState.token.length ? (
+              {authState.token !== null ? (
                 presentInArray(watchLaterState.itemsInWatchLater, _id) ? (
                   <WatchLaterButton
                     btnType="remove"
