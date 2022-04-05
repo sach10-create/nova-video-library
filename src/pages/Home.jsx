@@ -8,6 +8,9 @@ const HomePage = () => {
       <Link to="/auth" state={{ state: "/" }}>
         Authentication
       </Link>
+      <Link to="/explore" state={{ state: "/" }}>
+        Explore
+      </Link>
     </div>
   );
 };
