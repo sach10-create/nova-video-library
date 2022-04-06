@@ -59,12 +59,11 @@ const removeFromwatchlaterHandler = (
 					authorization: token,
 				},
 			});
-			console.log(response);
 			watchLaterDispatch({
 				type: "REMOVE_ITEM",
 				watchlaterItemsCount: response.data.watchlater.length,
 				itemsInwatchlater: [videoId],
-				watchlaterData: videoId,
+				watchLaterData: videoId,
 			});
 		} catch (error) {
 			console.log(error);

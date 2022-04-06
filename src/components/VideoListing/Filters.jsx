@@ -23,8 +23,6 @@ const Filters = () => {
 
   const resetFilters = () => videosDispatch({ ...clearFilters });
 
-  console.log(videosState);
-
   return (
     <div className="chip-container-video d-flex flex-wrap align-center">
       {categoriesData.length && Object.keys(videosState).length && (

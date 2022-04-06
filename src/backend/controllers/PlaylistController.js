@@ -46,6 +46,16 @@ export const addNewPlaylistHandler = function (schema, request) {
   const user = requiresAuth.call(this, request);
   if (user) {
     const { playlist } = JSON.parse(request.requestBody);
+    console.log(playlist);
+    if (user.playlists.some((item) => item.name === playlist.name)) {
+      return new Response(
+        409,
+        {},
+        {
+          errors: ["The playlist already exists."],
+        }
+      );
+    }
     user.playlists.push({ ...playlist, videos: [], _id: uuid() });
     return new Response(201, {}, { playlists: user.playlists });
   }
@@ -111,7 +121,7 @@ export const addVideoToPlaylistHandler = function (schema, request) {
     const playlistId = request.params.playlistId;
     const { video } = JSON.parse(request.requestBody);
     const playlist = user.playlists.find((item) => item._id === playlistId);
-    if (playlist.videos.some((item) => item.id === video.id)) {
+    if (playlist.videos.some((item) => item._id === video._id)) {
       return new Response(
         409,
         {},
@@ -140,6 +150,7 @@ export const removeVideoFromPlaylistHandler = function (schema, request) {
   if (user) {
     const playlistId = request.params.playlistId;
     const videoId = request.params.videoId;
+    console.log(playlistId , videoId);
     let playlist = user.playlists.find((item) => item._id === playlistId);
     const filteredVideos = playlist.videos.filter(
       (item) => item._id !== videoId

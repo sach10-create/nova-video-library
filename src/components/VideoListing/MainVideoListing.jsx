@@ -1,14 +1,38 @@
-import { useVideos, useAuth, useWatchLater } from "../../context";
+import {
+  useVideos,
+  useAuth,
+  useWatchLater,
+  useLikedVideos,
+  usePlaylist,
+} from "../../context";
 import { Link } from "react-router-dom";
 import { presentInArray } from "../../utils";
 import { WatchLaterButton } from "./ExploreButtons";
+import { LikedVideosButton } from "./LikedButton";
+import { PlaylistButton, PlaylistModal } from "./PlaylistModal";
 
 const MainVideoListing = () => {
-  const { videosData } = useVideos();
+  const { videosData, videoId } = useVideos();
   const { authState } = useAuth();
   const { watchLaterState } = useWatchLater();
 
-    console.log(authState);
+
+  const { likedVideosState } = useLikedVideos();
+
+  const { showPlaylistModal, setShowPlaylistModal, playlistDispatch } =
+    usePlaylist();
+  const handleShowPlaylist = (videoId) => {
+    setShowPlaylistModal(true);
+    playlistDispatch({
+      type: "UPDATE_SELECTED_VIDEO_ID",
+      payload: {
+        selectedVideoId: videoId,
+      },
+    });
+  };
+
+
+
   return (
     <div className="main-comp-video">
       {videosData.length !== 0 ? (
@@ -110,12 +134,49 @@ const MainVideoListing = () => {
               ) : (
                 <WatchLaterButton btnType="redirect" />
               )}
+
+              {authState.token !== null ? (
+                presentInArray(likedVideosState.itemsInLikedVideos, _id) ? (
+                  <LikedVideosButton
+                    btnType="remove"
+                    videoId={_id}
+                    token={authState.token}
+                  />
+                ) : (
+                  <LikedVideosButton
+                    btnType="add"
+                    videoData={{
+                      video: {
+                        _id,
+                        title,
+                        channelName,
+                        subscribers,
+                        verified,
+                        views,
+                        duration,
+                        likes,
+                        description,
+                        profileURL,
+                        thumbnailURL,
+                        videoURL,
+                      },
+                    }}
+                    token={authState.token}
+                  />
+                )
+              ) : (
+                <LikedVideosButton btnType="redirect" />
+              )}
+              <div onClick={() => handleShowPlaylist(_id)}>
+                <i className="playlist-icon cursor-pointer fa-solid fa-ellipsis-vertical"></i>
+              </div>
             </div>
           )
         )
       ) : (
         <h1>Loading</h1>
       )}
+      {showPlaylistModal && <PlaylistModal />}
     </div>
   );
 };

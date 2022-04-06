@@ -2,6 +2,7 @@ import "./App.css";
 import { Routes, Route } from "react-router-dom";
 import { Authentication ,Home , WatchHistory , Playlist , LikedVideos , WatchLater , Profile, VideoListing } from "./pages";
 import Mockman from "mockman-js";
+import { PlaylistDetails } from "./components/Playlist";
 
 function App() {
   return (
@@ -10,6 +11,7 @@ function App() {
   <Route path="/explore" element = {<VideoListing/>} />
   <Route path="/history" element = {<WatchHistory/>} />
   <Route path="/playlist" element = {<Playlist/>} />
+  <Route path="/playlist/:playlistId" element = {<PlaylistDetails/>} />
   <Route path="/liked" element = {<LikedVideos/>} />
   <Route path="/watchlater" element = {<WatchLater/>} />
   <Route path="/auth" element = {<Authentication/>} />
