@@ -5,8 +5,11 @@ const HomePage = () => {
     <div>
       <h1>This is home page</h1>
       {/* <Link to="/products">Products</Link> */}
-      <Link to="/auth" state={{ state: "/" }}>
+      {/* <Link to="/auth" state={{ state: "/" }}>
         Authentication
+      </Link> */}
+      <Link to="/explore" state={{ state: "/" }}>
+        Explore
       </Link>
     </div>
   );

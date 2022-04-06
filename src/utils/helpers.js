@@ -14,8 +14,7 @@ const removeFromArray = (arr, element) =>
  * @returns Array with element removed
  */
 const removeObjFromArray = (arr, element) =>
-  arr.filter((item) => item.addressId !== element);
-
+ arr.filter((item) => item._id !== element);
 /**
  * Check if its present in the array
  * @param {Array} arr
