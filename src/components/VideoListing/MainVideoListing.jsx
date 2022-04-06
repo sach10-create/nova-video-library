@@ -4,6 +4,7 @@ import {
   useWatchLater,
   useLikedVideos,
   usePlaylist,
+  useHistory
 } from "../../context";
 import { Link } from "react-router-dom";
 import { presentInArray } from "../../utils";
@@ -15,7 +16,7 @@ const MainVideoListing = () => {
   const { videosData, videoId } = useVideos();
   const { authState } = useAuth();
   const { watchLaterState } = useWatchLater();
-
+  const { historyDispatch} = useHistory();
 
   const { likedVideosState } = useLikedVideos();
 

@@ -28,3 +28,9 @@ export {
   addVideoToPlaylistHandler,
   removeVideoFromPlaylistHandler
 } from "./playlist";
+export {
+	addToHistoryHandler,
+	removeFromHistoryHandler,
+	getHistoryDataHandler,
+	removeAllFromHistoryHandler,
+} from "./history-management"
