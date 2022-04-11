@@ -1,4 +1,4 @@
-import { removeFromArray } from "../utils";
+import { removeFromArray, removeObjFromArray } from "../utils";
 /**
  * Reducer function to handle history state
  * @param {Object} historyState State values of history
@@ -15,6 +15,7 @@ const historyReducer = (historyState, { type, payload }) => {
 					...historyState.itemsInHistory,
 					{ ...payload.itemsInHistory },
 				],
+
 			};
 
 		case "REMOVE_ITEM":
@@ -24,7 +25,7 @@ const historyReducer = (historyState, { type, payload }) => {
 				itemsInHistory: removeFromArray(
 					historyState.itemsInHistory,
 					payload.itemsInHistory
-				),
+				)
 			};
 
 		case "REMOVE_ALL":

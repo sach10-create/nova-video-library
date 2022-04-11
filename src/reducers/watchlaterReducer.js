@@ -20,9 +20,10 @@ const watchlaterReducer = (watchLaterState, watchlaterAction) => {
                     watchlaterAction.watchlaterData,
                 ],
             };
-
+            
         case "REMOVE_ITEM":
             return {
+                
                 ...watchLaterState,
                 watchLaterItemsCount: watchlaterAction.watchlaterItemsCount,
                 itemsInWatchLater: removeFromArray(
@@ -31,7 +32,7 @@ const watchlaterReducer = (watchLaterState, watchlaterAction) => {
                 ),
                 watchLaterData: removeObjFromArray(
                     watchLaterState.watchLaterData,
-                    watchlaterAction.watchlaterData
+                    watchlaterAction.watchLaterData
                 ),
             };
         default:

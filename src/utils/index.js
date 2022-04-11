@@ -14,6 +14,7 @@ export {
   updateAddressObjInArray,
   getDataFromPlaylist,
   getVideosFromPlaylist,
+  getDataFromId
 } from "./helpers";
 export {
   addTolikedVideosHandler,

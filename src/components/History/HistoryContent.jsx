@@ -1,13 +1,14 @@
-import { VideoHorizontalCard } from "../Playlist/VideoHorizontalCard";
-import { useVideos, useHistory } from "../../context";
+import { useVideos, useHistory, useAuth } from "../../context";
+import { WatchLaterButton } from "../VideoListing";
 import {
   getDataFromId,
   removeFromHistoryHandler,
   removeAllFromHistoryHandler,
 } from "../../utils";
+import { Link } from "react-router-dom";
+
 const HistoryContent = () => {
-  const { historyState, historyDispatch, pauseHistory, setPauseHistory } =
-    useHistory();
+  const { historyState, historyDispatch } = useHistory();
   const { videosData } = useVideos();
   const videos = getDataFromId(historyState.itemsInHistory, videosData);
   const itemCount = videos.length;
@@ -15,76 +16,89 @@ const HistoryContent = () => {
     removeFromHistoryHandler(e, videoId, historyDispatch);
   const handleClearAllHistory = (e) =>
     removeAllFromHistoryHandler(e, historyDispatch);
-  const handlePauseHistory = () =>
-    pauseHistory ? setPauseHistory(false) : setPauseHistory(true);
+  const { authState } = useAuth();
+  console.log("Here" , historyState);
   return (
-    <main className="main">
-      <div className="flex-row flex-wrap flex-gap-2 m-5">
-        <div className="flex-column flex-gap-2">
-          <div className="cursor-pointer card card-shadow p-5 b-radius-2 h-auto">
-            <section className="flex-row justify-content-start align-start">
-              <img
-                src={
-                  videos.length
-                    ? videos[0].thumbnailURL
-                    : "https://i.ytimg.com/img/no_thumbnail.jpg"
-                }
-                alt="Playlists"
-                className="details-card-img b-radius-2"
-              />
-            </section>
-          </div>
-          <div className="flex-row justify-content-space-between align-center">
-            <h2 className="px-5 text-bold">Watch History</h2>
-            <h3 className="px-5">
-              {itemCount} {`${itemCount < 2 ? "Video" : "Videos"}`}
-            </h3>
-          </div>
+    <div className="extra">
+      {videos.length !== 0 ? (
+        videos.map(
+          ({
+            _id,
+            title,
+            views,
+            channelName,
+            subscribers,
+            verified,
+            likes,
+            duration,
+            category,
+            profileURL,
+            description,
+            thumbnailURL,
+            videoURL,
+          }) => (
+            <div className="video-card-container" key={_id}>
+              <Link to="{videos/${_id}}" className="video-card-image-container">
+                <img src={thumbnailURL} className="video-card-image" />
+              </Link>
+              <div className="details-container d-flex ">
+                <div className="thumbnail-container">
+                  <div className="profile-avatar">
+                    <img
+                      src={profileURL}
+                      alt="avatar"
+                      className="avatar s-img"
+                    />
+                  </div>
+                </div>
+                <div className="details">
+                  <h6 className="">{title}</h6>
 
-          <div className="flex-row align-center w-100">
-            <button
-              className="primary-btn p-5 b-radius-2 mx-5 my-0 
-text-bold icon-text-btn flex-row justify-content-center align-center flex-gap-1 flex-grow-1 cursor-pointer"
-              onClick={handleClearAllHistory}
-            >
-              <span>
-                <i className="fa-solid fa-trash"></i>
-              </span>
-              <p className="btn-text">Clear History</p>
-            </button>
-            {!pauseHistory ? (
-              <button
-                className="primary-btn p-5 b-radius-2 mx-5 my-0 
-							text-bold icon-text-btn flex-row justify-content-center align-center flex-gap-1 flex-grow-1 cursor-pointer"
-                onClick={handlePauseHistory}
-              >
-                <span>
-                  <i className="fa-solid fa-circle-pause"></i>
-                </span>
-                <p className="btn-text">Pause History</p>
-              </button>
-            ) : (
-              <button
-                className="primary-btn p-5 b-radius-2 mx-5 my-0 
-						text-bold icon-text-btn flex-row justify-content-center align-center flex-gap-1 flex-grow-1 cursor-pointer"
-                onClick={handlePauseHistory}
-              >
-                <span>
-                  <i className="fa-solid fa-circle-play"></i>
-                </span>
-                <p className="btn-text">Resume History</p>
-              </button>
-            )}
-          </div>
-        </div>
-
-        <VideoHorizontalCard
-          itemCount={itemCount}
-          videos={videos}
-          handleDelete={handleDeleteFromHistory}
-        />
-      </div>
-    </main>
+                  <div className="channel d-flex align-center">
+                    <h6>
+                      {" "}
+                      {channelName}
+                      {verified && <i className="fa-solid fa-circle-check"></i>}
+                    </h6>
+                  </div>
+                  <div
+                    className="ratings d-flex
+                                align-center"
+                  >
+                    <p>
+                      {" "}
+                      {views > 1000
+                        ? views > 1000000
+                          ? views / 1000000 + "M"
+                          : views / 1000 + "K"
+                        : views}{" "}
+                      views
+                    </p>
+                    <i className="fa-solid fa-circle"></i>
+                    <p>
+                      {" "}
+                      {likes > 1000
+                        ? likes > 1000000
+                          ? likes / 1000000 + "M"
+                          : likes / 1000 + "K"
+                        : likes}{" "}
+                      likes
+                    </p>
+                  </div>
+                  <WatchLaterButton
+                    btnType="remove"
+                    videoId={_id}
+                    token={authState.token}
+                  />
+                </div>
+              </div>
+            </div>
+          )
+        )
+      ) : (
+        <h1>Loading</h1>
+      )}
+    </div>
   );
 };
 

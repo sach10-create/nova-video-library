@@ -7,35 +7,37 @@ import { formatDateTime } from "./date";
  * @param {string} token encodedToken of user
  * @param {function} historyDispatch Reducer function
  */
-const addToHistoryHandler = (videoId, historyDispatch) => {
-	(async () => {
-		try {
-			const response = await axios.post(
-				`/api/user/history`,
-				{
-					videoId: videoId,
-				},
-				{
-					headers: {
-						Accept: "*/*",
-						authorization: JSON.parse(localStorage.getItem("user"))?.token,
-					},
-				}
-			);
-			historyDispatch({
-				type: "ADD_ITEM",
-				payload: {
-					historyItemsCount: response.data.history.length,
-					itemsInHistory: {
-						videoId: videoId,
-						updatedAt: formatDateTime(),
-					},
-				},
-			});
-		} catch (error) {
-			console.log(error);
-		}
-	})();
+const addToHistoryHandler = (videoId, historyDispatch ,token) => {
+  (async () => {
+    try {
+		
+      const response = await axios.post(
+        `/api/user/history`,
+        {
+          videoId: videoId,
+        },
+        {
+          headers: {
+            Accept: "*/*",
+            authorization: token
+          },
+        }
+      );
+      console.log(response);
+      historyDispatch({
+        type: "ADD_ITEM",
+        payload: {
+          historyItemsCount: response.data.history.length,
+          itemsInHistory: {
+            videoId: videoId,
+            updatedAt: formatDateTime(),
+          }
+        },
+      });
+    } catch (error) {
+      console.log(error);
+    }
+  })();
 };
 
 /**
@@ -45,28 +47,28 @@ const addToHistoryHandler = (videoId, historyDispatch) => {
  * @param {string} token encodedToken of user
  * @param {function} historyDispatch Reducer function
  */
-const removeFromHistoryHandler = (e, videoId, historyDispatch) => {
-	e.preventDefault();
-	(async () => {
-		try {
-			const response = await axios.delete(`/api/user/history/${videoId}`, {
-				headers: {
-					Accept: "*/*",
-					authorization: JSON.parse(localStorage.getItem("user"))?.token,
-				},
-			});
-			console.log(response);
-			historyDispatch({
-				type: "REMOVE_ITEM",
-				payload: {
-					historyItemsCount: response.data.history.length,
-					itemsInHistory: videoId,
-				},
-			});
-		} catch (error) {
-			console.log(error);
-		}
-	})();
+const removeFromHistoryHandler = (e, videoId, historyDispatch , token) => {
+  e.preventDefault();
+  (async () => {
+    try {
+      const response = await axios.delete(`/api/user/history/${videoId}`, {
+        headers: {
+          Accept: "*/*",
+          authorization: token,
+        },
+      });
+      console.log(response);
+      historyDispatch({
+        type: "REMOVE_ITEM",
+        payload: {
+          historyItemsCount: response.data.history.length,
+          itemsInHistory: videoId,
+        },
+      });
+    } catch (error) {
+      console.log(error);
+    }
+  })();
 };
 
 /**
@@ -76,26 +78,26 @@ const removeFromHistoryHandler = (e, videoId, historyDispatch) => {
  * @param {string} token encodedToken of user
  * @param {function} historyDispatch Reducer function
  */
-const removeAllFromHistoryHandler = (e, historyDispatch) => {
-	(async () => {
-		try {
-			const response = await axios.delete(`/api/user/history/all`, {
-				headers: {
-					Accept: "*/*",
-					authorization: JSON.parse(localStorage.getItem("user"))?.token,
-				},
-			});
-			historyDispatch({
-				type: "REMOVE_ALL",
-				payload: {
-					historyItemsCount: 0,
-					itemsInHistory: [],
-				},
-			});
-		} catch (error) {
-			console.log(error);
-		}
-	})();
+const removeAllFromHistoryHandler = (e, historyDispatch , token) => {
+  (async () => {
+    try {
+      const response = await axios.delete(`/api/user/history/all`, {
+        headers: {
+          Accept: "*/*",
+          authorization: JSON.parse(localStorage.getItem("user"))?.token,
+        },
+      });
+      historyDispatch({
+        type: "REMOVE_ALL",
+        payload: {
+          historyItemsCount: 0,
+          itemsInHistory: [],
+		        },
+      });
+    } catch (error) {
+      console.log(error);
+    }
+  })();
 };
 
 /**
@@ -104,30 +106,30 @@ const removeAllFromHistoryHandler = (e, historyDispatch) => {
  * @param {string} token encodedToken of user
  * @param {function} historyDispatch Reducer function
  */
-const getHistoryDataHandler = (historyDispatch) => {
-	(async () => {
-		try {
-			const response = await axios.get(`/api/user/history`, {
-				headers: {
-					Accept: "*/*",
-					authorization: JSON.parse(localStorage.getItem("user"))?.token,
-				},
-			});
-			historyDispatch({
-				type: "GET_ITEM",
-				payload: {
-					itemsInHistory: response.data.history,
-				},
-			});
-		} catch (error) {
-			console.log(error);
-		}
-	})();
+const getHistoryDataHandler = (historyDispatch , token) => {
+  (async () => {
+    try {
+      const response = await axios.get(`/api/user/history`, {
+        headers: {
+          Accept: "*/*",
+          authorization: JSON.parse(localStorage.getItem("user"))?.token,
+        },
+      });
+      historyDispatch({
+        type: "GET_ITEM",
+        payload: {
+          itemsInHistory: response.data.history,
+        },
+      });
+    } catch (error) {
+      console.log(error);
+    }
+  })();
 };
 
 export {
-	addToHistoryHandler,
-	removeFromHistoryHandler,
-	getHistoryDataHandler,
-	removeAllFromHistoryHandler,
+  addToHistoryHandler,
+  removeFromHistoryHandler,
+  getHistoryDataHandler,
+  removeAllFromHistoryHandler,
 };
