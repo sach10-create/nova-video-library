@@ -63,7 +63,7 @@ export const addVideoToHistoryHandler = function (schema, request) {
         }
       );
     }
-    user.history.push({_id : videoId});
+    user.history.push({ _id: videoId });
     return new Response(201, {}, { history: user.history });
   } catch (error) {
     return new Response(

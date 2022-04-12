@@ -29,7 +29,7 @@ const addToHistoryHandler = (videoId, historyDispatch ,token) => {
         payload: {
           historyItemsCount: response.data.history.length,
           itemsInHistory: {
-            videoId: videoId,
+            _id: videoId,
             updatedAt: formatDateTime(),
           }
         },
@@ -57,7 +57,7 @@ const removeFromHistoryHandler = (e, videoId, historyDispatch , token) => {
           authorization: token,
         },
       });
-      console.log(response);
+    
       historyDispatch({
         type: "REMOVE_ITEM",
         payload: {
@@ -106,13 +106,13 @@ const removeAllFromHistoryHandler = (e, historyDispatch , token) => {
  * @param {string} token encodedToken of user
  * @param {function} historyDispatch Reducer function
  */
-const getHistoryDataHandler = (historyDispatch , token) => {
+const getHistoryDataHandler = (token , historyDispatch) => {
   (async () => {
     try {
       const response = await axios.get(`/api/user/history`, {
         headers: {
           Accept: "*/*",
-          authorization: JSON.parse(localStorage.getItem("user"))?.token,
+          authorization: token,
         },
       });
       historyDispatch({

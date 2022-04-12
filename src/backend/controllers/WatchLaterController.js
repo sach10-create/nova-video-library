@@ -45,7 +45,7 @@ export const addItemToWatchLater = function (schema, request) {
   const user = requiresAuth.call(this, request);
   if (user) {
     const { video } = JSON.parse(request.requestBody);
-    if (user.watchlater.some((item) => item.id === video.id)) {
+    if (user.watchlater.some((item) => item._id === video._id)) {
       return new Response(
         409,
         {},
