@@ -17,8 +17,7 @@ import { PlaylistDetails } from "./components/Playlist";
 function App() {
   return (
     <Routes>
-      <Route path="/" element={<Home />} />
-      <Route path="/explore" element={<VideoListing />} />
+      <Route path="/" element={<VideoListing />} />
       <Route path="/history" element={<WatchHistory />} />
       <Route path="/playlist" element={<Playlist />} />
       <Route path="/playlist/:playlistId" element={<PlaylistDetails />} />

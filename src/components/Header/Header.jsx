@@ -1,9 +1,8 @@
 import { Link } from "react-router-dom";
 import { useTheme } from "../../context";
-const { themeIcon, handleSetTheme } = useTheme();
-
 
 const Header = () => {
+  const { themeIcon, handleSetTheme } = useTheme();
   return (
     <header className="header-shadow header-comp">
       <div className="header-container-1 d-flex justify-content-space-between align-center">
@@ -47,7 +46,7 @@ const Header = () => {
           <i
             className={`fas fa-${themeIcon} theme-icon social`}
             aria-label="dark/light theme icon"
-            onCLick={handleSetTheme}
+            onClick={handleSetTheme}
           ></i>
         </div>
       </div>

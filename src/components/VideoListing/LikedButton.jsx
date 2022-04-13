@@ -42,7 +42,7 @@ const LikedVideosButton = (props) => {
       {props.btnType === "redirect" && (
         <Link
           to="/auth"
-          state={{ state: "/explore" }}
+          state={{ state: "/" }}
           className="no-link-decoration cursor-pointer"
         >
           <div className="liked-videos-icon d-flex align-center justify-content-center">
