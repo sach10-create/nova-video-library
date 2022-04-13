@@ -44,6 +44,7 @@
   padding: 0;
   margin: 0;
   height: auto;
+  border-radius: 1rem;
 }
 
 .video-card-image {
@@ -249,24 +250,28 @@
 
 .horizontal-card-img{
   width: 30rem;
-  height: 30rem;
+  height: auto;
+  border-radius: 1rem;
+
+}
+
+.horizontal-image-container{
+  background: none;
+  align-self: center;
+  justify-self: center;
 }
 
 .jersey-btn{
   background-color: var(--secondary-color);
 }
 
-.listing-card-img{
-  width: 15rem;
-  height: 15rem;
-}
-
-.listing-card-container{
-  width: 100%;
+.horizontal-card-container{
+  box-shadow: none;
+  height: max-content;
 }
 
 .listing-container{
-  margin: 0 0 3rem 0;
+  margin: 3rem;
 }
 
 .delete-list-icon{

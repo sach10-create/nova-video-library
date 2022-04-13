@@ -6,3 +6,4 @@ export { useAuth , AuthProvider} from "./auth-context";
 export { useLikedVideos , LikedVideosProvider} from "./liked-videos";
 export { usePlaylist , PlaylistProvider} from "./playlist-context";
 export { useHistory , HistoryProvider} from "./history-context";
+export { useTheme , ThemeProvider} from "./theme-context";

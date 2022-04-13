@@ -8,7 +8,6 @@ const getCategoriesDatahook = () => {
     (async () => {
       try {
         const response = await axios.get(`/api/categories`);
-        // console.log(response.data.categories);
         setcategoriesData(response.data.categories);
       } catch (error) {
         console.log(error);

@@ -12,16 +12,15 @@ const VideoHorizontalCard = ({ itemCount, videos , handleDelete }) => {
             thumbnailURL,
           }) => (
             <li key={_id} className="no-list listing-container">
-              <article className="horizontal-card-container listing-card-container">
-                <div className="horizontal-image-container d-flex justify-content-center align-center">
+              <article className="horizontal-card-container">
+                <div className="horizontal-image-container">
                   <img
                     src={thumbnailURL}
                     alt={title}
                     title={title}
-                    className="horizontal-card-img listing-card-img"
+                    className="horizontal-card-img"
                   />
                 </div>
-
                 <div className="horizontal-text-container">
                   <h3 className="h1-tag">{title}</h3>
                   <p className="h2-tag">

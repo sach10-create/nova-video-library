@@ -1,5 +1,4 @@
-import { useAuth, useWatchLater, useVideos } from "../../context";
-import { Link } from "react-router-dom";
+import { useAuth, useWatchLater } from "../../context";
 import { VideoHorizontalCard } from "../Playlist/VideoHorizontalCard";
 import { removeFromwatchlaterHandler } from "../../utils";
 
