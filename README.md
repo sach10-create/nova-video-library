@@ -20,8 +20,9 @@ A video Library for Football lovers.
 # Key Features
 ▶️ All the components support both dark and light theme. <br/>
 ▶️ Home Page <br/>
-▶️ Product Listing Page <br/>
-▶️ Filters by Price range slider, category, sort by, category, and rating range slider <br/>
-▶️ Cart Management <br/>
-▶️ Wishlist Management <br/>
+▶️ Filters by category <br/>
+▶️ Watchlater Management <br/>
+▶️ Watch History Management <br/>
 ▶️ Authentication (Signup, Login, and Logout) <br/>
+▶️ Like Management <br/>
+▶️ Playist Management <br/>
