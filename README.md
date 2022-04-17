@@ -18,10 +18,10 @@ A video Library for Football lovers.
 
 
 # Key Features
-▶️ All the components support both dark and light theme.
-▶️ Home Page
-▶️ Product Listing Page
-▶️ Filters by Price range slider, category, sort by, category, and rating range slider
-▶️ Cart Management
-▶️ Wishlist Management
-▶️ Authentication (Signup, Login, and Logout)
+▶️ All the components support both dark and light theme. <br/>
+▶️ Home Page <br/>
+▶️ Product Listing Page <br/>
+▶️ Filters by Price range slider, category, sort by, category, and rating range slider <br/>
+▶️ Cart Management <br/>
+▶️ Wishlist Management <br/>
+▶️ Authentication (Signup, Login, and Logout) <br/>
