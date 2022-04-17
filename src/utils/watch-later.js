@@ -1,7 +1,4 @@
-
 import axios from "axios";
-import { presentObjInArray } from "./";
-import { removeFromCartHandler } from "./";
 /**
  * Add video data to watchlater
  * @param {*} element
@@ -10,31 +7,31 @@ import { removeFromCartHandler } from "./";
  * @param {function} watchlaterDispatch Reducer function
  */
 const addTowatchlaterHandler = (
-	element,
-	videoData,
-	token,
-	watchLaterDispatch
+  element,
+  videoData,
+  token,
+  watchLaterDispatch
 ) => {
-	element.preventDefault();
-	(async () => {
-		try {
-			const response = await axios.post(`/api/user/watchlater`, videoData, {
-				headers: {
-					Accept: "*/*",
-					authorization: token,
-				},
-			});
-			console.log(response);
-			watchLaterDispatch({
-				type: "ADD_ITEM",
-				watchlaterItemsCount: response.data.watchlater.length,
-				itemsInwatchlater: [videoData.video._id],
-				watchlaterData: videoData.video,
-			});
-		} catch (error) {
-			console.log(error);
-		}
-	})();
+  element.preventDefault();
+  (async () => {
+    try {
+      const response = await axios.post(`/api/user/watchlater`, videoData, {
+        headers: {
+          Accept: "*/*",
+          authorization: token,
+        },
+      });
+      console.log(response);
+      watchLaterDispatch({
+        type: "ADD_ITEM",
+        watchlaterItemsCount: response.data.watchlater.length,
+        itemsInwatchlater: [videoData.video._id],
+        watchlaterData: videoData.video,
+      });
+    } catch (error) {
+      console.log(error);
+    }
+  })();
 };
 
 /**
@@ -45,30 +42,30 @@ const addTowatchlaterHandler = (
  * @param {function} watchlaterDispatch Reducer function
  */
 const removeFromwatchlaterHandler = (
-	element,
-	videoId,
-	token,
-	watchLaterDispatch
+  element,
+  videoId,
+  token,
+  watchLaterDispatch
 ) => {
-	element.preventDefault();
-	(async () => {
-		try {
-			const response = await axios.delete(`/api/user/watchlater/${videoId}`, {
-				headers: {
-					Accept: "*/*",
-					authorization: token,
-				},
-			});
-			watchLaterDispatch({
-				type: "REMOVE_ITEM",
-				watchlaterItemsCount: response.data.watchlater.length,
-				itemsInwatchlater: [videoId],
-				watchLaterData: videoId,
-			});
-		} catch (error) {
-			console.log(error);
-		}
-	})();
+  element.preventDefault();
+  (async () => {
+    try {
+      const response = await axios.delete(`/api/user/watchlater/${videoId}`, {
+        headers: {
+          Accept: "*/*",
+          authorization: token,
+        },
+      });
+      watchLaterDispatch({
+        type: "REMOVE_ITEM",
+        watchlaterItemsCount: response.data.watchlater.length,
+        itemsInwatchlater: [videoId],
+        watchLaterData: videoId,
+      });
+    } catch (error) {
+      console.log(error);
+    }
+  })();
 };
 
 /**
@@ -78,26 +75,26 @@ const removeFromwatchlaterHandler = (
  * @param {function} watchlaterDispatch Reducer function
  */
 const getwatchlaterDataHandler = (token, watchLaterDispatch) => {
-	(async () => {
-		try {
-			const response = await axios.get(`/api/user/watchlater`, {
-				headers: {
-					Accept: "*/*",
-					authorization: token,
-				},
-			});
-			watchLaterDispatch({
-				type: "GET_ITEM",
-				watchlaterData: response.data.watchlater,
-			});
-		} catch (error) {
-			console.log(error);
-		}
-	})();
+  (async () => {
+    try {
+      const response = await axios.get(`/api/user/watchlater`, {
+        headers: {
+          Accept: "*/*",
+          authorization: token,
+        },
+      });
+      watchLaterDispatch({
+        type: "GET_ITEM",
+        watchlaterData: response.data.watchlater,
+      });
+    } catch (error) {
+      console.log(error);
+    }
+  })();
 };
 
 export {
-	addTowatchlaterHandler,
-	removeFromwatchlaterHandler,
-	getwatchlaterDataHandler,
+  addTowatchlaterHandler,
+  removeFromwatchlaterHandler,
+  getwatchlaterDataHandler,
 };

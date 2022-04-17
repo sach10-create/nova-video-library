@@ -14,7 +14,7 @@ const removeFromArray = (arr, element) =>
  * @returns Array with element removed
  */
 const removeObjFromArray = (arr, element) =>
- arr.filter((item) => item._id !== element);
+  arr.filter((item) => item._id !== element);
 /**
  * Check if its present in the array
  * @param {Array} arr
@@ -63,6 +63,12 @@ const updateAddressObjInArray = (arr, element) =>
     []
   );
 
+  const getDataFromId = (items, data) =>
+	items.map(({ _id, updatedAt }) => ({
+		...data.find((item) => item._id === _id),
+		updatedAt,
+	}));
+
 const getVideosFromPlaylist = (items, data) =>
   items.map(({ _id }) => ({
     ...data.find((item) => item._id === _id),
@@ -83,4 +89,5 @@ export {
   updateAddressObjInArray,
   getDataFromPlaylist,
   getVideosFromPlaylist,
+  getDataFromId
 };

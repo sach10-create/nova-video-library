@@ -53,8 +53,8 @@ export const addVideoToHistoryHandler = function (schema, request) {
         }
       );
     }
-    const { video } = JSON.parse(request.requestBody);
-    if (user.history.some((item) => item.id === video.id)) {
+    const { videoId } = JSON.parse(request.requestBody);
+    if (user.history.some((item) => item._id === videoId)) {
       return new Response(
         409,
         {},
@@ -63,7 +63,7 @@ export const addVideoToHistoryHandler = function (schema, request) {
         }
       );
     }
-    user.history.push(video);
+    user.history.push({ _id: videoId });
     return new Response(201, {}, { history: user.history });
   } catch (error) {
     return new Response(

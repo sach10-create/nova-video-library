@@ -3,3 +3,4 @@ export { videosReducer , sortByReducer} from "./videosReducer";
 export { watchlaterReducer } from "./watchlaterReducer";
 export {likedVideosReducer} from "./likedVideosReducer";
 export { playlistReducer} from "./playlistReducer";
+export { historyReducer} from "./history-reducer";

@@ -1,4 +1,5 @@
 const VideoHorizontalCard = ({ itemCount, videos , handleDelete }) => {
+
   return (
     <>
       {itemCount ? (
@@ -10,9 +11,9 @@ const VideoHorizontalCard = ({ itemCount, videos , handleDelete }) => {
             verified,
             thumbnailURL,
           }) => (
-            <li key={_id} className="no-list">
+            <li key={_id} className="no-list listing-container">
               <article className="horizontal-card-container">
-                <div className="horizontal-image-container d-flex justify-content-center align-center">
+                <div className="horizontal-image-container">
                   <img
                     src={thumbnailURL}
                     alt={title}
@@ -20,14 +21,15 @@ const VideoHorizontalCard = ({ itemCount, videos , handleDelete }) => {
                     className="horizontal-card-img"
                   />
                 </div>
-
                 <div className="horizontal-text-container">
-                  <h3 className="">{title}</h3>
-                  <p className="">
+                  <h3 className="h1-tag">{title}</h3>
+                  <p className="h2-tag">
                     {channelName}{" "}
                     {verified && <i className="fa-solid fa-circle-check"></i>}
                   </p>
-                  <i className="fa-solid fa-trash-can" onClick={(e) => handleDelete(e , _id)}></i>
+                  <div className="delete-list-icon">
+                  <i className="fa-solid fa-trash-can h2-tag" onClick={(e) => handleDelete(e , _id)}></i>
+                  </div>
                 </div>
               </article>
             </li>

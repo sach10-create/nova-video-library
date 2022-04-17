@@ -4,6 +4,7 @@ import {
   useWatchLater,
   useLikedVideos,
   usePlaylist,
+  useHistory
 } from "../../context";
 import { Link } from "react-router-dom";
 import { presentInArray } from "../../utils";
@@ -15,7 +16,7 @@ const MainVideoListing = () => {
   const { videosData, videoId } = useVideos();
   const { authState } = useAuth();
   const { watchLaterState } = useWatchLater();
-
+  const { historyDispatch} = useHistory();
 
   const { likedVideosState } = useLikedVideos();
 
@@ -53,7 +54,7 @@ const MainVideoListing = () => {
             videoURL,
           }) => (
             <div className="video-card-container" key={_id}>
-              <Link to="{videos/${_id}}" className="video-card-image-container">
+              <Link to={`/video/${_id}`} className="video-card-image-container">
                 <img src={thumbnailURL} className="video-card-image" />
               </Link>
               <div className="details-container d-flex ">

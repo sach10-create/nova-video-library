@@ -14,6 +14,7 @@ export {
   updateAddressObjInArray,
   getDataFromPlaylist,
   getVideosFromPlaylist,
+  getDataFromId
 } from "./helpers";
 export {
   addTolikedVideosHandler,
@@ -28,3 +29,9 @@ export {
   addVideoToPlaylistHandler,
   removeVideoFromPlaylistHandler
 } from "./playlist";
+export {
+	addToHistoryHandler,
+	removeFromHistoryHandler,
+	getHistoryDataHandler,
+	removeAllFromHistoryHandler,
+} from "./history-management"

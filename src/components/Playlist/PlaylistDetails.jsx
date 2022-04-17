@@ -56,11 +56,20 @@ const PlaylistDetails = () => {
                 className="horizontal-card-img"
               />
               <div>
-                <i
-                  className="fa-solid fa-trash-can"
+                <h3 className="text-center"> {playlistData.name} </h3>
+                <p className="text-center text-italic h1-tag">
+                  Videos: {playlistData.videos.length}{" "}
+                </p>
+                <button
+                  className="jersey-btn d-flex align-center delete-play"
                   onClick={handleDeletePlaylist}
-                ></i>
-                <i className="fa-solid fa-pen-to-square"></i>
+                >
+                  <span class="cart-icon">
+                    {" "}
+                    <i className="fa-solid fa-trash-can"></i>
+                  </span>
+                  <p class="cart-text">Delete Playlist</p>
+                </button>
               </div>
             </div>
             <div>
@@ -72,11 +81,7 @@ const PlaylistDetails = () => {
             </div>
           </div>
         ) : (
-          <Navigate
-            replace
-            to="/playlist"
-            element={<PlaylistListing />}
-          />
+          <Navigate replace to="/playlist" element={<PlaylistListing />} />
         )}
       </div>
       <Footer />

@@ -44,6 +44,7 @@
   padding: 0;
   margin: 0;
   height: auto;
+  border-radius: 1rem;
 }
 
 .video-card-image {
@@ -244,4 +245,42 @@
 
 .play{
   flex-wrap: wrap;
+  gap:20rem
+}
+
+
+.jersey-btn{
+  background-color: var(--secondary-color);
+}
+
+
+.listing-container{
+  margin: 3rem;
+}
+
+.delete-list-icon{
+  position: absolute;
+  right: 1rem;
+  bottom: 1rem;
+}
+
+.horizontal-card-container{
+  width:50rem;
+}
+
+
+.horizontal-image-container {
+  grid-area: img;
+  background: none;
+}
+
+.horizontal-card-img {
+  width: 100%;
+  height: 10rem;
+}
+
+
+.horizontal-text-container {
+  grid-area: text;
+  background-color: var(--white);
 }

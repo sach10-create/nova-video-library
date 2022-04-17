@@ -6,3 +6,4 @@ export {ProfilePage as Profile} from "./Profile";
 export {WatchHistoryPage as WatchHistory} from "./WatchHistory";
 export {WatchLaterPage as WatchLater} from "./WatchLater";
 export {VideoListingPage as VideoListing} from "./VideoListing";
+export {SingleVideoPage as SingleVideo} from "./SingleVideo";

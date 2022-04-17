@@ -1,7 +1,7 @@
-import { WatchLater} from "../components"
+import { WatchLater } from "../components";
 
-const WatchLaterPage = () =>{
-    return (<WatchLater/>)
-}
+const WatchLaterPage = () => {
+  return <WatchLater />;
+};
 
-export {WatchLaterPage}
+export { WatchLaterPage };

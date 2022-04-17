@@ -12,12 +12,6 @@ const Navbar = ({ props }) => {
             Home
           </Link>
         </li>
-        <li>
-          <Link to="/explore" className="side-nav-link">
-            <i className="fa-solid fa-compass side-nav-icon"></i>
-            Explore
-          </Link>
-        </li>
         <li>{ authState.token != null ?
           <Link to="/liked" className="side-nav-link">
             <i className="fa-solid fa-thumbs-up side-nav-icon"></i>
