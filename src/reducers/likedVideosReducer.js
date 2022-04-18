@@ -24,16 +24,22 @@ const likedVideosReducer = (likedVideosState, likedVideosAction) => {
         case "REMOVE_ITEM":
             return {
                 ...likedVideosState,
-                likedVideosItemsCount: likedVideosAction.likedVideosItemsCount,
+                likedVideosItemsCount: payload.likedVideosItemsCount,
                 itemsInLikedVideos: removeFromArray(
                     likedVideosState.itemsInLikedVideos,
-                    likedVideosAction.itemsInLikedVideos[0]
+                    payload.itemsInLikedVideos[0]
                 ),
                 likedVideosData: removeObjFromArray(
                     likedVideosState.likedVideosData,
                     likedVideosAction.likedVideosData
                 ),
             };
+            case "RESET":
+                return {
+                    ...likedVideosState,
+                    likedVideosItemsCount: 0,
+                    itemsInLikedVideos: [],
+                };
         default:
             return likedVideosState;
     }

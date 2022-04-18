@@ -34,6 +34,12 @@ const historyReducer = (historyState, { type, payload }) => {
 				historyItemsCount: payload.historyItemsCount,
 				itemsInHistory: [],
 			};
+			case "RESET":
+				return {
+					...historyState,
+					historyItemsCount: 0,
+					itemsInHistory: [],
+				};
 		default:
 			return historyState;
 	}

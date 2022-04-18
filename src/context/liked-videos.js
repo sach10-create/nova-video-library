@@ -18,7 +18,7 @@ const LikedVideosProvider = ({ children }) => {
         defaultLikedVideosContext
     );
     const token = localStorage.getItem("token");
-    useEffect(() => getlikedVideosDataHandler(token, likedVideosDispatch), []);
+    useEffect(() => token?.length && getlikedVideosDataHandler(token, likedVideosDispatch), []);
     return (
         <LikedVideosContext.Provider
             value={{

@@ -13,6 +13,12 @@ const loginReducer = (loginState, loginAction) => {
         email: loginAction.email,
         password: loginAction.password,
       };
+      case "RESET":
+        return {
+          ...loginState,
+          email: "",
+          password: "",
+        };
     default:
       return loginState;
   }
@@ -29,7 +35,13 @@ const registerReducer = (registerState, registerAction) => {
         ...registerState,
         password: registerAction.password,
       };
-
+      case "RESET":
+        return {
+          ...registerState,
+          email: "",
+          password: "",
+          firstName: "",
+        };
     default:
       return registerState;
   }
@@ -45,6 +57,14 @@ const authReducer = (authState, authAction) => {
       return { ...authState, name: authAction.name };
     case "UPDATE_USER":
       return { ...authState, ...authAction };
+      case "LOGOUT":
+        return {
+          ...authState,
+          token: "",
+          firstName: "",
+          lastName: "",
+          email: "",
+        };
     default:
       return authState;
   }

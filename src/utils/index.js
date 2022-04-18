@@ -1,4 +1,4 @@
-export { loginHandler } from "./authentication";
+export { loginHandler ,registerHandler , RequireAuth } from "./authentication";
 export { CategoryVideos, VideoCompose } from "./filters";
 export {
   getwatchlaterDataHandler,

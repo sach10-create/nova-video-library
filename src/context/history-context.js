@@ -22,7 +22,7 @@ const HistoryProvider = ({ children }) => {
   );
 
   const token = localStorage.getItem("token");
-  useEffect(() => getHistoryDataHandler(token, historyDispatch), []);
+  useEffect(() => token?.length && getHistoryDataHandler(token, historyDispatch), []);
   return (
     <HistoryContext.Provider
       value={{

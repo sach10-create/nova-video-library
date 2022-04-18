@@ -1,8 +1,26 @@
-import { Link } from "react-router-dom";
-import { useTheme } from "../../context";
+import { Link, useLocation } from "react-router-dom";
+import { useAuth, useTheme , useHistory, useLikedVideos, useLogin, useRegister, useWatchLater, usePlaylist } from "../../context";
 
 const Header = () => {
   const { themeIcon, handleSetTheme } = useTheme();
+  const { authDispatch, authState } = useAuth();
+  const { historyDispatch } = useHistory();
+  const { likedVideosDispatch } = useLikedVideos();
+  const { loginDispatch } = useLogin();
+  const { registerDispatch } = useRegister();
+  const { watchLaterDispatch} = useWatchLater();
+   const {playlistDispatch} = usePlaylist();
+  const handleLogout = () => {
+    localStorage.clear();
+    authDispatch({ type: "LOGOUT" });
+    historyDispatch({ type: "RESET" });
+    likedVideosDispatch({ type: "RESET" });
+    loginDispatch({ type: "RESET" });
+    registerDispatch({ type: "RESET" });
+    watchLaterDispatch({ type: "RESET" });
+    playlistDispatch({ type: "RESET" });
+  };
+
   return (
     <header className="header-shadow header-comp">
       <div className="header-container-1 d-flex justify-content-space-between align-center">
@@ -27,13 +45,11 @@ const Header = () => {
           >
             <i className="fab fa-github social"></i>
           </Link>
-          <Link
-            to="https://twitter.com/thisis_sachin_p"
-            target="_blank"
-            aria-label="View Twitter Profile"
-            className="no-link"
-          >
-            <i className="fab fa-twitter social"></i>
+
+          <Link to="/auth" className="no-link">
+            <i className="fas fa-user header-img" onClick={handleLogout}>
+             <p className="h6-tag"> {authState.token ? "Logout" : "SignIn"} </p>
+            </i>
           </Link>
           <Link
             to="https://www.linkedin.com/in/sachin-patekar-2199911a3/"

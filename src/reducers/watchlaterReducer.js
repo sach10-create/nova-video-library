@@ -6,38 +6,43 @@ import { removeFromArray, removeObjFromArray } from "../utils";
  * @returns Updated state into watchlaterState
  */
 const watchlaterReducer = (watchLaterState, watchlaterAction) => {
-    switch (watchlaterAction.type) {
-        case "ADD_ITEM":
-            return {
-                ...watchLaterState,
-                watchLaterItemsCount: watchlaterAction.watchlaterItemsCount,
-                itemsInWatchLater: [
-                    ...watchLaterState.itemsInWatchLater,
-                    ...watchlaterAction.itemsInwatchlater,
-                ],
-                watchLaterData: [
-                    ...watchLaterState.watchLaterData,
-                    watchlaterAction.watchlaterData,
-                ],
-            };
-            
-        case "REMOVE_ITEM":
-            return {
-                
-                ...watchLaterState,
-                watchLaterItemsCount: watchlaterAction.watchlaterItemsCount,
-                itemsInWatchLater: removeFromArray(
-                    watchLaterState.itemsInWatchLater,
-                    watchlaterAction.itemsInwatchlater[0]
-                ),
-                watchLaterData: removeObjFromArray(
-                    watchLaterState.watchLaterData,
-                    watchlaterAction.watchLaterData
-                ),
-            };
-        default:
-            return watchLaterState;
-    }
+  switch (watchlaterAction.type) {
+    case "ADD_ITEM":
+      return {
+        ...watchLaterState,
+        watchLaterItemsCount: watchlaterAction.watchlaterItemsCount,
+        itemsInWatchLater: [
+          ...watchLaterState.itemsInWatchLater,
+          ...watchlaterAction.itemsInwatchlater,
+        ],
+        watchLaterData: [
+          ...watchLaterState.watchLaterData,
+          watchlaterAction.watchlaterData,
+        ],
+      };
+
+    case "REMOVE_ITEM":
+      return {
+        ...watchLaterState,
+        watchLaterItemsCount: watchlaterAction.watchlaterItemsCount,
+        itemsInWatchLater: removeFromArray(
+          watchLaterState.itemsInWatchLater,
+          watchlaterAction.itemsInwatchlater[0]
+        ),
+        watchLaterData: removeObjFromArray(
+          watchLaterState.watchLaterData,
+          watchlaterAction.watchLaterData
+        ),
+      };
+    case "RESET":
+      return {
+        ...watchLaterState,
+        watchlaterItemsCount: 0,
+        itemsInWatchlater: [],
+      };
+    default:
+      return watchLaterState;
+  }
 };
 
 export { watchlaterReducer };

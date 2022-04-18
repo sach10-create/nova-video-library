@@ -18,7 +18,7 @@ const PlaylistProvider = ({ children }) => {
   const token = localStorage.getItem("token");
   const [showPlaylistModal, setShowPlaylistModal] = useState(false);
   const [showCreatePlaylist, setShowCreatePlaylist] = useState(false);
-  useEffect(() => getPlaylistDataHandler(token, playlistDispatch), []);
+  useEffect(() =>token?.length && getPlaylistDataHandler(token, playlistDispatch), []);
   return (
     <PlaylistContext.Provider
       value={{

@@ -71,11 +71,10 @@ const MainVideoListing = () => {
                   <h6 className="">{title}</h6>
 
                   <div className="channel d-flex align-center">
-                    <h6>
-                      {" "}
-                      {channelName}
-                      {verified && <i className="fa-solid fa-circle-check"></i>}
-                    </h6>
+                  
+                     <h6> {channelName} </h6>
+                     <h6> {verified && <i className="fa-solid fa-circle-check d-flex align-center justify-content-center"></i>}</h6>
+                    
                   </div>
                   <div
                     className="ratings d-flex

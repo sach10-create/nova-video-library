@@ -1,4 +1,13 @@
 import axios from "axios";
+import { Navigate, useLocation } from "react-router-dom";
+const RequireAuth = ({ children }) => {
+  const location = useLocation();
+  return localStorage.getItem("token") ? (
+    children
+  ) : (
+    <Navigate to="/auth" state={{ from: location }} replace />
+  );
+};
 
 const loginHandler = (e, location, navigate, loginState, authDispatch) => {
   e.preventDefault();
@@ -16,7 +25,7 @@ const loginHandler = (e, location, navigate, loginState, authDispatch) => {
       localStorage.setItem("token", response.data.encodedToken);
       localStorage.setItem("email", response.data.foundUser.email);
       localStorage.setItem("name", response.data.foundUser.firstName);
-      navigate(location.state.state);
+      navigate(location?.state?.from?.pathname);
     } catch (error) {
       console.log(error);
     }
@@ -49,11 +58,11 @@ const registerHandler = (
       localStorage.setItem("token", response.data.encodedToken);
       localStorage.setItem("email", response.data.createdUser.email);
       localStorage.setItem("name", response.data.createdUser.name);
-      navigate(location.state.state);
+      navigate(location?.state?.from?.pathname);
     } catch (error) {
       console.log(error);
     }
   })();
 };
 
-export { loginHandler, registerHandler };
+export { loginHandler, registerHandler , RequireAuth};

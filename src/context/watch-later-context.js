@@ -17,7 +17,7 @@ const WatchLaterProvider = ({ children }) => {
     defaultWatchLaterContext
   );
   const token = localStorage.getItem("token");
-  useEffect(() => getwatchlaterDataHandler(token, watchLaterDispatch), []);
+  useEffect(() =>token?.length && getwatchlaterDataHandler(token, watchLaterDispatch), []);
   return (
     <WatchLaterContext.Provider
       value={{
